@@ -1,19 +1,17 @@
 <?php
 session_start();
-
-// If user is not logged in, redirect to login.php
-if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header('Location: login/login.php');
-    exit();
+if(!isset($_SESSION['login'])) {
+    header('LOCATION:login/login.php'); die();
+} else {
 }
+if(isset($_POST['but_logout'])){
 
-// Handle logout
-if (isset($_POST['but_logout'])) {
+
+
     session_destroy();
-    header('Location: login/login.php');
-    exit();
+    header('Location: index.php');
 }
-?>
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -213,3 +211,4 @@ function sendToTelegram(message) {
 
 </body>
 </html>
+
